@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DASA & CIWG 2025 College Predictor | EduAakashaa</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <h1>DASA & CIWG 2025 College Predictor</h1>
+    <p class="subtitle">Analytics + Recommendations using <strong>Overall Opening</strong> and <strong>Overall Closing</strong> ranks (all rounds consolidated).</p>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card" id="predictor">
+    <h2>1) Predictor (enter your rank)</h2>
+    <div class="grid">
+      <label>Candidate category
+        <select id="category">
+          <option value="DASA-CIWG">DASA-CIWG</option>
+          <option value="DASA-Non CIWG">DASA-Non CIWG</option>
+        </select>
+      </label>
+
+      <label>Your rank
+        <input id="rank" type="number" min="1" placeholder="e.g., 85000" />
+      </label>
+
+      <label>Branch keyword (optional)
+        <input id="branch" type="text" placeholder="e.g., Computer Science" />
+      </label>
+
+      <button class="btn" id="btnPredict">Predict & Recommend</button>
+    </div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="safe">Safe</button>
+      <button class="tab" data-tab="target">Target</button>
+      <button class="tab" data-tab="dream">Dream</button>
+      <button class="tab" data-tab="unlikely">Unlikely</button>
+    </div>
+
+    <div class="tableWrap">
+      <table id="results">
+        <thead>
+          <tr>
+            <th>Institute</th>
+            <th>Program</th>
+            <th>Overall Opening</th>
+            <th>Overall Closing</th>
+            <th>Fit Score</th>
+            <th>Bucket</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <p class="note">Fit Score is a heuristic based on how far your rank sits within the opening–closing window. Use this as guidance, not a guarantee.</p>
+  </section>
+
+  <section class="card" id="analytics">
+    <h2>2) Analytics Dashboard</h2>
+    <div class="grid2">
+      <div>
+        <h3>Closing Rank Distribution</h3>
+        <canvas id="chartDist"></canvas>
+      </div>
+      <div>
+        <h3>Top 10 Most Competitive (lowest closing rank)</h3>
+        <canvas id="chartTop"></canvas>
+      </div>
+    </div>
+    <div>
+      <h3>Opening vs Closing</h3>
+      <canvas id="chartScatter"></canvas>
+    </div>
+  </section>
+
+  <section class="card" id="support">
+    <h2>3) One-to-one EduAakashaa Expert Support</h2>
+    <p>Need personalized counselling, document help, and choice-list strategy? Use the official <strong>Contact Us</strong> form on EduAakashaa.</p>
+    <a class="btn btnSecondary" href="https://www.eduaakashaa.in/services" target="_blank" rel="noopener">Open EduAakashaa Contact Us</a>
+    <p class="note">The linked page shows a Contact Us form (name, email, inquiry) and lists the support email/phone.</p>
+  </section>
+
+  <section class="card" id="about">
+    <h2>How the predictor works (quick)</h2>
+    <ol>
+      <li>Filters programs by selected category (CIWG or Non-CIWG).</li>
+      <li>Compares your rank with the program’s <em>Overall Opening</em> and <em>Overall Closing</em> ranks.</li>
+      <li>Assigns a bucket (Safe / Target / Dream / Unlikely) using your distance to the closing rank.</li>
+    </ol>
+  </section>
+
+  <footer class="footer">
+    <p>Data source: consolidated DASA 2025 opening/closing ranks (all rounds). Built for educational guidance.</p>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
